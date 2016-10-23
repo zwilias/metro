@@ -9,15 +9,9 @@
         "syntax-jsx",
         "transform-flow-strip-types",
         "transform-class-properties",
-        "transform-object-rest-spread",
-        "external-helpers"
+        "transform-object-rest-spread"
     ],
     "presets": [
-        [
-            "es2015",
-            {
-                "modules": false
-            }
-        ]
+        "es2015"
     ]
 }

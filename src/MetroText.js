@@ -13,7 +13,7 @@ class MetroText extends MetroComponent {
     }
 
     renderInto (parent: any) {
-        new MAF.element.Text({
+        return new MAF.element.Text({
             data: this.data,
             styles: this.styles
         }).appendTo(parent);

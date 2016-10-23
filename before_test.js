@@ -1,6 +1,5 @@
-const MAF = {};
 
-(function (MAF) {
+(function (globals) {
     class MAFElementMock {
         constructor (...args) {
             this.args = args;
@@ -11,12 +10,15 @@ const MAF = {};
 
         appendTo = (args) => {
             this.invocations.appendTo.push({args: args});
+            return this;
         }
     }
 
-    MAF.element = {
-        Text: MAFElementMock
+    const MAF = {
+        element: {
+            Text: MAFElementMock
+        }
     };
-})(MAF);
 
-export default MAF;
+    globals.MAF = MAF;
+})(window);
