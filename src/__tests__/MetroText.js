@@ -24,6 +24,7 @@ describe('MetroText', () => {
 
         const result = text.renderInto(parent);
 
-        console.log(result);
+        expect(result.args[0]).toEqual(props);
+        expect(result.invocations.appendTo[0].args).toBe(parent);
     });
 });
