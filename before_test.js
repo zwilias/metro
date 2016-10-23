@@ -14,10 +14,21 @@
         }
     }
 
+    class MAFClassMock {
+        constructor (settings) {
+            this.settings = settings;
+        }
+
+        renderView = () => {
+            this.settings.createView();
+        }
+    }
+
     const MAF = {
         element: {
             Text: MAFElementMock
-        }
+        },
+        Class: MAFClassMock
     };
 
     globals.MAF = MAF;

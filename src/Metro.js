@@ -1,21 +1,15 @@
-import MetroViewMode from './MetroViewMode';
-import MetroViewRenderer from './MetroViewRenderer';
-import MetroElementRenderer from './MetroElementRenderer';
+import MetroRenderer from './MetroRenderer';
 
 const createElement = (elementType, props, ...children) => {
     props = props || {};
     children = children || [];
 
-    if (elementType.prototype instanceof MetroViewMode) {
-        return new MetroViewRenderer(elementType, props, children);
-    }
-
-    return new MetroElementRenderer(elementType, props, children);
+    return new MetroRenderer(elementType, props, children);
 }
 
 const render = (element) => {
     element.beforeMount();
-    return element.render();
+    return element.renderContainer();
 }
 
 const Metro = {
