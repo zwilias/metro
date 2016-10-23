@@ -10,11 +10,19 @@
   "author": "Ilias Van Peer <ilias.vanpeer@gmail.com>",
   "devDependencies": {
     "babel-jest": "^16.0.0",
+    "babel-plugin-external-helpers": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.16.0",
     "babel-plugin-transform-flow-strip-types": "^6.14.0",
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "^6.16.0",
     "flow-bin": "^0.33.0",
     "jest-cli": "^16.0.2"
+  },
+  "jest": {
+    "setupFiles": [
+      "before_test.js"
+    ]
   }
 }

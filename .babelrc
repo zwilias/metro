@@ -1,7 +1,23 @@
 {
     "plugins": [
+        [
+            "transform-react-jsx",
+            {
+                "pragma": "Metro.createElement"
+            }
+        ],
+        "syntax-jsx",
         "transform-flow-strip-types",
         "transform-class-properties",
-        "transform-object-rest-spread"
+        "transform-object-rest-spread",
+        "external-helpers"
+    ],
+    "presets": [
+        [
+            "es2015",
+            {
+                "modules": false
+            }
+        ]
     ]
 }
