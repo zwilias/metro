@@ -1,35 +1,35 @@
-
-(function (globals) {
-    class MAFElementMock {
-        constructor (...args) {
-            this.args = args;
-            this.invocations = {
-                appendTo: []
-            };
-        }
-
-        appendTo = (args) => {
-            this.invocations.appendTo.push({args: args});
-            return this;
-        }
+class MAFElementMock {
+    constructor (...args) {
+        this.args = args;
+        this.invocations = {
+            appendTo: []
+        };
     }
 
-    class MAFClassMock {
-        constructor (settings) {
-            this.settings = settings;
-        }
+    appendTo = (args) => {
+        this.invocations.appendTo.push({args: args});
+        return this;
+    }
+}
 
-        renderView = () => {
-            this.settings.createView();
-        }
+class MAFClassMock {
+    constructor (settings) {
+        this.settings = settings;
     }
 
-    const MAF = {
-        element: {
-            Text: MAFElementMock
-        },
-        Class: MAFClassMock
-    };
+    renderView = () => {
+        this.settings.createView();
+    }
+}
 
-    globals.MAF = MAF;
-})(window);
+const MAF = {
+    element: {
+        Text: MAFElementMock
+    },
+    system: {
+        FullscreenView: 'FullscreenView'
+    },
+    Class: MAFClassMock
+};
+
+window.MAF = MAF;
