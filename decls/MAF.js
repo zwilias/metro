@@ -3,8 +3,11 @@ declare class MAFElement {
     appendTo(element: any): MAFElement;
 }
 
+declare class MAFClass {}
+
 declare var MAF: {
     element: {
         Text: typeof MAFElement
-    }
+    },
+    Class: typeof MAFClass
 };

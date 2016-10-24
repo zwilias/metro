@@ -3,19 +3,18 @@ import MetroText from '../MetroText';
 describe('MetroText', () => {
     it('Should construct properly', () => {
         const props = {
-            data: 'testData',
-            styles: {}
+            styles: {},
+            children: []
         };
 
         const text = new MetroText(props);
 
-        expect(text.data).toBe(props.data);
         expect(text.styles).toBe(props.styles);
     });
 
     it('Should render into its parent with the correct data and styles', () => {
         const props = {
-            data: 'testData',
+            children: ['testData'],
             styles: {}
         };
 
@@ -24,7 +23,11 @@ describe('MetroText', () => {
 
         const result = text.renderInto(parent);
 
-        expect(result.args[0]).toEqual(props);
+        expect(result.args[0]).toEqual({
+            styles: {},
+            data: 'testData'
+        });
+
         expect(result.invocations.appendTo[0].args).toBe(parent);
     });
 });

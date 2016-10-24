@@ -1,7 +1,11 @@
 // @flow
 import MetroNode from './MetroNode';
+import MetroRenderer from './MetroRenderer';
 
 class MetroComponent extends MetroNode {
+    render: () => MetroRenderer
+    renderComponent: () => MAF.Class
+
     constructor(props: Object) {
         super(props);
 
@@ -9,8 +13,9 @@ class MetroComponent extends MetroNode {
             throw new TypeError("Cannot construct MetroComponent");
         }
     }
+
     renderInto (parent: any) {
-        throw new TypeError("Musn't call renderInto on MetroComponent");
+        return this.render().beforeMount().renderInto(parent);
     }
 }
 

@@ -1,37 +1,45 @@
+//@flow
 import MetroComponent from './MetroComponent';
 
+type MetroElement = Class<MetroComponent> | string
+
 class MetroRenderer {
-    constructor (elementType, properties, children) {
+    elementType: MetroElement;
+    properties: Object;
+    children: Array<MetroRenderer>;
+    componentInstance: MetroComponent
+
+    constructor (elementType: MetroElement, properties: ?Object, children: Array<MetroRenderer>) {
         this.elementType = elementType;
         this.properties = properties || {};
-        this.children = children || [];
+        this.children = children || [];
 
         this.properties.children = this.children;
     }
 
     beforeMount = () => {
         if (! this.componentInstance) {
+            // $FlowFixMe - ensure, somehow, that we don't reach here if elementType is a string
             this.componentInstance = new this.elementType(this.properties);
         }
+
+        return this;
     }
 
     renderContainer = () => {
         return this.componentInstance.renderComponent(this);
     }
 
-    renderChildrenInto = (container) => {
-        this.children.forEach((child) => {
-            child.beforeMount();
-            child.renderInto(container);
-        });
+    renderChildrenInto = (container: MAF.Class) => {
+        this.children
+            .filter((child) => (child instanceof MetroRenderer))
+            .forEach((child) => {
+                child.beforeMount().renderInto(container);
+            });
     }
 
-    renderInto = (container) => {
-        if (this.componentInstance instanceof MetroComponent) {
-            container = this.componentInstance.renderInto(container);
-        }
-
-        this.renderChildrenInto(container);
+    renderInto = (container: MAF.Class) => {
+        return this.componentInstance.renderInto(container);
     }
 }
 
