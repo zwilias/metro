@@ -7,9 +7,10 @@ const createElement = (elementType, props, ...children) => {
     return new MetroRenderer(elementType, props, children);
 }
 
-const render = (element) => {
-    element.beforeMount();
-    return element.renderContainer();
+const render = (element, container) => {
+    return container.renderContainer((container) => {
+        element.renderInto(container)
+    });
 }
 
 const Metro = {

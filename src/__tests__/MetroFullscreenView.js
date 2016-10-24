@@ -14,10 +14,8 @@ describe('MetroFullscreenView', () => {
     describe('renderComponent', () => {
         it('should return a MAF.Class', () => {
             let result = null;
-            const renderer = {
-                renderChildrenInto: (view) => {
-                    result = view;
-                }
+            const renderer = (view) => {
+                result = view;
             }
 
             const component = new MetroFullscreenView();

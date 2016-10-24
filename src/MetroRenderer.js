@@ -9,7 +9,7 @@ class MetroRenderer {
     children: Array<MetroRenderer>;
     componentInstance: MetroComponent
 
-    constructor (elementType: MetroElement, properties: ?Object, children: Array<MetroRenderer>) {
+    constructor (elementType: MetroElement, properties: ?Object, children: ?Array<MetroRenderer>) {
         this.elementType = elementType;
         this.properties = properties || {};
         this.children = children || [];
@@ -26,8 +26,8 @@ class MetroRenderer {
         return this;
     }
 
-    renderContainer = () => {
-        return this.componentInstance.renderComponent(this);
+    renderContainer = (renderCallback: (MAF.Class)) => {
+        return this.beforeMount().componentInstance.renderComponent(renderCallback);
     }
 
     renderChildrenInto = (container: MAF.Class) => {
@@ -39,7 +39,7 @@ class MetroRenderer {
     }
 
     renderInto = (container: MAF.Class) => {
-        return this.componentInstance.renderInto(container);
+        return this.beforeMount().componentInstance.renderInto(container);
     }
 }
 

@@ -5,7 +5,7 @@ class MetroFullscreenView extends MetroViewMode {
         super(props);
     }
 
-    renderComponent = (renderer) => {
+    renderComponent = (renderCallback) => {
         return new MAF.Class({
             id: 'something',
         	ClassName: 'MetroFullscreenView',
@@ -14,7 +14,7 @@ class MetroFullscreenView extends MetroViewMode {
         	// Create your view template
         	createView: function () {
                 var view = this;
-                renderer.renderChildrenInto(view);
+                renderCallback(view);
         	}
         });
     }
