@@ -1,11 +1,7 @@
 import MetroRenderer from './MetroRenderer';
+import MetroRendererFactory from './MetroRendererFactory';
 
-const createElement = (elementType, props, ...children) => {
-    props = props || {};
-    children = children || [];
-
-    return new MetroRenderer(elementType, props, children);
-}
+const createElement = MetroRendererFactory.create;
 
 const render = (element, container) => {
     return container.renderContainer((container) => {

@@ -9,5 +9,8 @@ declare var MAF: {
     element: {
         Text: typeof MAFElement
     },
+    system: {
+        FullscreenView: typeof MAFClass
+    },
     Class: typeof MAFClass
 };

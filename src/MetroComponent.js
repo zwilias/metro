@@ -3,7 +3,7 @@ import MetroNode from './MetroNode';
 import MetroRenderer from './MetroRenderer';
 
 class MetroComponent extends MetroNode {
-    constructor(props: ?Object) {
+    constructor(props: Object) {
         super(props);
 
         if (this.constructor === MetroComponent) {

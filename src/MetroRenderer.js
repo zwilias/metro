@@ -1,17 +1,18 @@
 //@flow
-import MetroComponent from './MetroComponent';
+import MetroNode from './MetroNode';
 
-type MetroElement = Class<MetroComponent> | string
+type MetroElement = Class<MetroNode> | string
+type MetroChild = MetroRenderer | string;
 
 class MetroRenderer {
     elementType: MetroElement;
     properties: Object;
-    componentInstance: MetroComponent
+    componentInstance: MetroNode;
 
-    constructor (elementType: MetroElement, properties: ?Object, children: ?Array<MetroRenderer>) {
+    constructor (elementType: MetroElement, properties: Object, children: Array<MetroChild>) {
         this.elementType = elementType;
-        this.properties = properties || {};
-        this.properties.children = children || [];
+        this.properties = properties;
+        this.properties.children = children;
     }
 
     beforeMount = () => {

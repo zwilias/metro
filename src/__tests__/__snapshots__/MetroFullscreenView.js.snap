@@ -1,1 +1,8 @@
-exports[`MetroFullscreenView renderComponent should return a MAF.Class 1`] = `"{\"id\":\"something\",\"ClassName\":\"MetroFullscreenView\",\"Extends\":\"FullscreenView\"}"`;
+exports[`MetroFullscreenView e2e should return a MAF.Class 1`] = `
+Object {
+  "ClassName": "MetroFullscreenView",
+  "Extends": "FullscreenView",
+  "createView": [Function],
+  "id": "randomId",
+}
+`;

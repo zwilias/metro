@@ -16,10 +16,6 @@ class MAFClassMock {
     constructor (settings) {
         this.settings = settings;
     }
-
-    renderView = () => {
-        this.settings.createView();
-    }
 }
 
 const MAF = {

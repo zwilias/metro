@@ -1,4 +1,5 @@
 import MetroFullscreenView from '../MetroFullscreenView';
+import Metro from '../Metro';
 jest.disableAutomock();
 
 describe('MetroFullscreenView', () => {
@@ -11,19 +12,10 @@ describe('MetroFullscreenView', () => {
         });
     });
 
-    describe('renderComponent', () => {
+    describe('e2e', () => {
         it('should return a MAF.Class', () => {
-            let result = null;
-            const renderer = (view) => {
-                result = JSON.stringify(view);
-            }
-
-            const component = new MetroFullscreenView();
-            const renderedComponent = component.renderComponent(renderer);
-
-            renderedComponent.renderView();
-
-            expect(result).toMatchSnapshot();
+            const mafMock = (<MetroFullscreenView />).renderContainer();
+            expect(mafMock.settings).toMatchSnapshot();
         });
     });
 });
