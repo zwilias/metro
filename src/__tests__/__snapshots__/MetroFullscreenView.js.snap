@@ -1,0 +1,1 @@
+exports[`MetroFullscreenView renderComponent should return a MAF.Class 1`] = `"{\"id\":\"something\",\"ClassName\":\"MetroFullscreenView\",\"Extends\":\"FullscreenView\"}"`;

@@ -6,15 +6,12 @@ type MetroElement = Class<MetroComponent> | string
 class MetroRenderer {
     elementType: MetroElement;
     properties: Object;
-    children: Array<MetroRenderer>;
     componentInstance: MetroComponent
 
     constructor (elementType: MetroElement, properties: ?Object, children: ?Array<MetroRenderer>) {
         this.elementType = elementType;
         this.properties = properties || {};
-        this.children = children || [];
-
-        this.properties.children = this.children;
+        this.properties.children = children || [];
     }
 
     beforeMount = () => {
@@ -28,14 +25,6 @@ class MetroRenderer {
 
     renderContainer = (renderCallback: (MAF.Class)) => {
         return this.beforeMount().componentInstance.renderComponent(renderCallback);
-    }
-
-    renderChildrenInto = (container: MAF.Class) => {
-        this.children
-            .filter((child) => (child instanceof MetroRenderer))
-            .forEach((child) => {
-                child.beforeMount().renderInto(container);
-            });
     }
 
     renderInto = (container: MAF.Class) => {

@@ -1,12 +1,17 @@
 // @flow
+import type MetroRenderer from './MetroRenderer';
 
 class MetroNode {
     props: Object;
-    context: Object;
+    render: () => MetroRenderer
+    renderComponent: () => MAF.Class
 
-    constructor (props: ?Object, context: ?Object) {
+    constructor (props: ?Object) {
         this.props = props || {};
-        this.context = context || {};
+
+        if (this.constructor === MetroNode) {
+            throw new TypeError("Cannot construct MetroNode directly");
+        }
     }
 }
 

@@ -1,3 +1,8 @@
 [libs]
-
 decls/
+
+[ignore]
+.*/__tests__/.*
+.*/node_modules/.*
+<PROJECT_ROOT>/before_test\.js
+<PROJECT_ROOT>/metro\.js

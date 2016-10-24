@@ -15,7 +15,7 @@ describe('MetroFullscreenView', () => {
         it('should return a MAF.Class', () => {
             let result = null;
             const renderer = (view) => {
-                result = view;
+                result = JSON.stringify(view);
             }
 
             const component = new MetroFullscreenView();
@@ -23,7 +23,7 @@ describe('MetroFullscreenView', () => {
 
             renderedComponent.renderView();
 
-            expect(result).not.toBeNull();
+            expect(result).toMatchSnapshot();
         });
     });
 });
